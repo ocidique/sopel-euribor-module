@@ -7,7 +7,7 @@ from sopel import plugin
 @plugin.command("euribor")
 def get_euribor(bot, trigger):
     try:
-        url = "https://www.suomenpankki.fi/WebForms/ReportViewerPage.aspx?report=/tilastot/markkina-_ja_hallinnolliset_korot/euribor_korot_xml_short_fi&output=xml"
+        url = "https://reports.suomenpankki.fi/WebForms/ReportViewerPage.aspx?report=/tilastot/markkina-_ja_hallinnolliset_korot/euribor_korot_xml_short_fi&output=xml"
         file = urllib.request.urlopen(url)
         data = file.read()
         file.close()
@@ -73,7 +73,7 @@ def get_euribor(bot, trigger):
                     get_euribor_12_month_rate(period["col_grp_currency_Collection"])
                 )
 
-        say_str = "Euribor 12kk: {}%, eilen: {}, vko sit: {}, kk sit: {}, vuos sit: {}".format(
+        say_str = "Euribor 12kk: {}%, edellinen: {}, ed. vko: {}, ed. kk: {}, ed. vuosi: {}".format(
             euribor_12_month_latest,
             format_final_value(euribor_12_month_latest, euribor_12_month_prev_day),
             format_final_value(euribor_12_month_latest, euribor_12_month_prev_week),
