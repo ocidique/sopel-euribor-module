@@ -34,13 +34,13 @@ def get_euribor(bot, trigger):
         )
 
         """ Previous month """
-        prev_month = latest_date.replace(month=latest_date.month - 1)
+        prev_month = latest_date - timedelta(days=30)
         prev_month_day_valid = get_valid_next_period_value(
             periods, convert_datetime_to_date_str(prev_month)
         )
 
         """ Previous year """
-        prev_year = latest_date.replace(year=latest_date.year - 1)
+        prev_year = latest_date - timedelta(days=365)
         prev_year_day_valid = get_valid_next_period_value(
             periods, convert_datetime_to_date_str(prev_year)
         )
